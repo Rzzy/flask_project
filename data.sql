@@ -20,4 +20,3 @@ insert into t_menu (id,name,level,pid,path) value (31,'角色列表',2,3,'/autho
 insert into t_menu (id,name,level,pid,path) value (32,'权限列表',2,3,'/role_list');
 insert into t_menu (id,name,level,pid,path) value (22,'商品列表',2,4,'/product_list');
 insert into t_menu (id,name,level,pid,path) value (23,'分类列表',2,4,'/group_list');
-

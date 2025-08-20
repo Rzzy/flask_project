@@ -65,10 +65,10 @@ class User(Resource):
       to_dict_msg(500)
   def delete(self):
     id = int(request.form.get('id').strip())
-    usr = models.User.query.get(id)
+    usr = models.User.get(id);
     if usr:
-      db.session.delete(usr)
-      db.session.commit
+      db.session.delete(usr);
+      db.session.commit()
 user_api.add_resource(User, '/user')
 
 class UserList(Resource):
@@ -115,6 +115,17 @@ def login():
           'token': token 
         })
   return { 'status': 500, 'msg': 'error'}
+
+@user.route('/reset', methods=['GET'])
+def reset():
+  try: 
+    id = int(request.args.get('id').strip());
+    usr = models.User.query.get(id);
+    usr.password = '123'
+    db.session.commit();
+    return to_dict_msg(200);
+  except Exception as e: 
+    return to_dict_msg(500);
 
 @user.route('/test')
 @login_required
